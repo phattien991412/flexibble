@@ -1,17 +1,21 @@
 import Link from "next/link";
-import Image from "next/image";
+
 import { NavLinks } from "@/constant";
 import AuthProvider from "./AuthProvider";
+import { getCurrentUser } from "@/lib/session";
 
-const NavBar = () => {
-    const session = true;
+import ProfileMenu from "./ProfileMenu";
+import BlurredImage from "./BlurredImage";
+
+const NavBar = async () => {
+    const session = await getCurrentUser();
   return (
     <nav className="flexBetween navbar">
       <div className="flex-1 flexStart gap-10">
         <Link href="/">
-          <Image src="/logo.svg" width={115} height={43} alt="Flexibble" />
+          <BlurredImage src="/logo.svg" width={115} height={43} alt="Flexibble" />
         </Link>
-        <ul className="xl:flex hidden text-small gap-7">
+        <ul className="xl:flex hidden text-small gap-7 nav">
           {NavLinks.map(item =>
             <li key={item.key}>
               <Link href={item.href}>
@@ -23,11 +27,10 @@ const NavBar = () => {
       </div>
 
       <div className="flexCenter gap-4">
-            {session ? (
+            {session?.user ? (
                 <>
-                    UserPhoto
-                    <Link href={"/create-project"}>
-                    Share work</Link>
+                    <ProfileMenu session={session} />
+                    <Link href={'/create-project'}>Share Work</Link>
                 </>
             ) : (
                 <AuthProvider/>

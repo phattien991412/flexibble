@@ -14,6 +14,80 @@ body {
   font-family: Inter;
 }
 
+.blur-img {
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  pointer-events: none;
+}
+
+.blur-img::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  animation: pulse 2.5s infinite;
+  background-color: var(--text-color);
+  pointer-events: none;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.blur-img.loaded::before {
+  animation: none;
+  content: none;
+}
+
+.blur-img img {
+  opacity: 0;
+  transition: opacity 250ms ease-in-out;
+  pointer-events: auto;
+}
+
+.blur-img.loaded img {
+  opacity: 1;
+}
+
+.nav li {
+  position: relative;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: #a259ff;
+    border-radius: 4px;
+    scale: 0 1;
+    transform-origin: right;
+    transition: scale 0.5s;
+  }
+
+  &:hover::before {
+    scale: 1;
+    transform-origin: left;
+  }
+}
+
+.nav .selected {
+  &::before {
+    scale: 1;
+  }
+}
+
 .flexCenter {
   @apply flex justify-center items-center;
 }
