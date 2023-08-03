@@ -1,11 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-        domains: ['lh3.googleusercontent.com', 'res.cloudinary.com']
-    },
-    experimental: {
-        serverComponentsExternalPackages: ['cloudinary', 'graphql-request']
-    }
-}
+  images: {
+    domains: ["lh3.googleusercontent.com", "res.cloudinary.com"]
+  },
+  experimental: {
+    serverComponentsExternalPackages: ["cloudinary", "graphql-request"]
+  },
+  i18n: {
+    locales: ["en"],
+    defaultLocale: "en"
+  }
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

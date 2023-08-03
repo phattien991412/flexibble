@@ -4,8 +4,6 @@ import Modal from "@/components/Modal";
 import ProjectForm from "@/components/ProjectForm";
 import { getCurrentUser } from "@/lib/session";
 
-
-
 const CreateProject = async () => {
     const session = await getCurrentUser();
 
