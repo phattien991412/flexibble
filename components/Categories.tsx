@@ -12,11 +12,7 @@ const Categories = () => {
   const category = searchParams.get("category");
 
   const handleTags = (item: string) => {
-    if(item === "All") {
-      router.push('/')
-    } else {
-      router.push(`${pathName}?category=${item}`);
-    }
+    router.push(`${pathName}?category=${item}`);
   };
 
   return (
