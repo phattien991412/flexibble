@@ -15,7 +15,7 @@ body {
 }
 
 .blur-img {
-  position: relative;
+  /* position: relative; */
   background-repeat: no-repeat;
   background-size: cover;
   pointer-events: none;
